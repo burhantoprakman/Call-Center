@@ -1,0 +1,325 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		636D6FA01FF63C0B00232BC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D6F9F1FF63C0B00232BC2 /* AppDelegate.swift */; };
+		636D6FA21FF63C0B00232BC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D6FA11FF63C0B00232BC2 /* ViewController.swift */; };
+		636D6FA51FF63C0B00232BC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636D6FA31FF63C0B00232BC2 /* Main.storyboard */; };
+		636D6FA81FF63C0B00232BC2 /* Call_Center.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 636D6FA61FF63C0B00232BC2 /* Call_Center.xcdatamodeld */; };
+		636D6FAA1FF63C0B00232BC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636D6FA91FF63C0B00232BC2 /* Assets.xcassets */; };
+		636D6FAD1FF63C0B00232BC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636D6FAB1FF63C0B00232BC2 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		636D6F9C1FF63C0B00232BC2 /* Call Center.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Call Center.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		636D6F9F1FF63C0B00232BC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		636D6FA11FF63C0B00232BC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		636D6FA41FF63C0B00232BC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		636D6FA71FF63C0B00232BC2 /* Call_Center.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Call_Center.xcdatamodel; sourceTree = "<group>"; };
+		636D6FA91FF63C0B00232BC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		636D6FAC1FF63C0B00232BC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		636D6FAE1FF63C0B00232BC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		636D6F991FF63C0B00232BC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		636D6F931FF63C0B00232BC2 = {
+			isa = PBXGroup;
+			children = (
+				636D6F9E1FF63C0B00232BC2 /* Call Center */,
+				636D6F9D1FF63C0B00232BC2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		636D6F9D1FF63C0B00232BC2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				636D6F9C1FF63C0B00232BC2 /* Call Center.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		636D6F9E1FF63C0B00232BC2 /* Call Center */ = {
+			isa = PBXGroup;
+			children = (
+				636D6F9F1FF63C0B00232BC2 /* AppDelegate.swift */,
+				636D6FA11FF63C0B00232BC2 /* ViewController.swift */,
+				636D6FA31FF63C0B00232BC2 /* Main.storyboard */,
+				636D6FA91FF63C0B00232BC2 /* Assets.xcassets */,
+				636D6FAB1FF63C0B00232BC2 /* LaunchScreen.storyboard */,
+				636D6FAE1FF63C0B00232BC2 /* Info.plist */,
+				636D6FA61FF63C0B00232BC2 /* Call_Center.xcdatamodeld */,
+			);
+			path = "Call Center";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		636D6F9B1FF63C0B00232BC2 /* Call Center */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 636D6FB11FF63C0B00232BC2 /* Build configuration list for PBXNativeTarget "Call Center" */;
+			buildPhases = (
+				636D6F981FF63C0B00232BC2 /* Sources */,
+				636D6F991FF63C0B00232BC2 /* Frameworks */,
+				636D6F9A1FF63C0B00232BC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Call Center";
+			productName = "Call Center";
+			productReference = 636D6F9C1FF63C0B00232BC2 /* Call Center.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		636D6F941FF63C0B00232BC2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Burhan TOPRAKMAN";
+				TargetAttributes = {
+					636D6F9B1FF63C0B00232BC2 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 636D6F971FF63C0B00232BC2 /* Build configuration list for PBXProject "Call Center" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 636D6F931FF63C0B00232BC2;
+			productRefGroup = 636D6F9D1FF63C0B00232BC2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				636D6F9B1FF63C0B00232BC2 /* Call Center */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		636D6F9A1FF63C0B00232BC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				636D6FAD1FF63C0B00232BC2 /* LaunchScreen.storyboard in Resources */,
+				636D6FAA1FF63C0B00232BC2 /* Assets.xcassets in Resources */,
+				636D6FA51FF63C0B00232BC2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		636D6F981FF63C0B00232BC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				636D6FA21FF63C0B00232BC2 /* ViewController.swift in Sources */,
+				636D6FA81FF63C0B00232BC2 /* Call_Center.xcdatamodeld in Sources */,
+				636D6FA01FF63C0B00232BC2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		636D6FA31FF63C0B00232BC2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636D6FA41FF63C0B00232BC2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		636D6FAB1FF63C0B00232BC2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				636D6FAC1FF63C0B00232BC2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		636D6FAF1FF63C0B00232BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		636D6FB01FF63C0B00232BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		636D6FB21FF63C0B00232BC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Call Center/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vavienAgency.Call-Center";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		636D6FB31FF63C0B00232BC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Call Center/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vavienAgency.Call-Center";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		636D6F971FF63C0B00232BC2 /* Build configuration list for PBXProject "Call Center" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				636D6FAF1FF63C0B00232BC2 /* Debug */,
+				636D6FB01FF63C0B00232BC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		636D6FB11FF63C0B00232BC2 /* Build configuration list for PBXNativeTarget "Call Center" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				636D6FB21FF63C0B00232BC2 /* Debug */,
+				636D6FB31FF63C0B00232BC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		636D6FA61FF63C0B00232BC2 /* Call_Center.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				636D6FA71FF63C0B00232BC2 /* Call_Center.xcdatamodel */,
+			);
+			currentVersion = 636D6FA71FF63C0B00232BC2 /* Call_Center.xcdatamodel */;
+			path = Call_Center.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 636D6F941FF63C0B00232BC2 /* Project object */;
+}
