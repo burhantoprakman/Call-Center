@@ -26,14 +26,20 @@ class NewsVC : UIViewController,UITableViewDelegate,UITableViewDataSource,Activi
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        if ( UserDefaults.standard.bool(forKey: "kayitsizKullanici") == true ){
+            
+        } else {
+            let defaults:UserDefaults = UserDefaults.standard
+            userid = defaults.string(forKey: "userid")!
+            autoid = defaults.string(forKey: "autoid")!
+            firebaseToken = defaults.string(forKey: "firebasetoken")!
+            showActivityIndicator()
+            getNews()
+            
+        }
+ 
         
-        let defaults:UserDefaults = UserDefaults.standard
-        userid = defaults.string(forKey: "userid")!
-        autoid = defaults.string(forKey: "autoid")!
-        firebaseToken = defaults.string(forKey: "firebasetoken")!
-        
-        showActivityIndicator()
-        getNews()
+    
         
         if let image = UIImage(named: "üst bölüm.png") {
             let backgroundImage = image.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch)

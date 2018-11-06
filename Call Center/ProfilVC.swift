@@ -8,11 +8,13 @@
 
 import Foundation
 import UIKit
-class ProfilVC : UIViewController,ActivityIndicatorPresenter {
+import Alamofire
+
+class ProfilVC : UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ActivityIndicatorPresenter {
     var autoid : String = ""
     var firebaseToken : String = ""
     var userid : String = ""
-    
+    var selectedPhoto:UIImage? = nil
     var activityIndicator = UIActivityIndicatorView()
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -21,10 +23,13 @@ class ProfilVC : UIViewController,ActivityIndicatorPresenter {
     @IBOutlet weak var exampleLabel: UILabel!
     @IBOutlet weak var mailLabel: UILabel!
     @IBOutlet weak var firmLabel: UILabel!
-    @IBOutlet weak var faceLabel: UILabel!
-    @IBOutlet weak var linkedLabel: UILabel!
-    @IBOutlet weak var intaLabel: UILabel!
+    @IBOutlet weak var faceTV: UITextField!
+    @IBOutlet weak var instaTV: UITextField!
+    @IBOutlet weak var linkedinTV: UITextField!
     @IBOutlet weak var profilUpdate: UIButton!
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +41,21 @@ class ProfilVC : UIViewController,ActivityIndicatorPresenter {
         profilUpdate.backgroundColor = purpleColor
         self.hideKeyboardWhenTappedAround()
         
-        let defaults = UserDefaults.standard
-        autoid = defaults.string(forKey: "autoid")!
-        firebaseToken = defaults.string(forKey: "firebasetoken")!
-        userid = defaults.string(forKey: "userid")!
+        if ( UserDefaults.standard.bool(forKey: "kayitsizKullanici") == true ){
+           
+        } else {
+            let defaults = UserDefaults.standard
+            autoid = defaults.string(forKey: "autoid")!
+            firebaseToken = defaults.string(forKey: "firebasetoken")!
+            userid = defaults.string(forKey: "userid")!
+            
+            showActivityIndicator()
+            getUserProfil()
+            
+            
+        }
         
-        showActivityIndicator()
-        getUserProfil()
-        
+      
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
             menuButton.action = "revealToggle:"
@@ -54,8 +66,26 @@ class ProfilVC : UIViewController,ActivityIndicatorPresenter {
             self.navigationController?.navigationBar.setBackgroundImage(backgroundImage, for: .default)
         }
         
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(ProfilVC.choosePhoto))
+        profilImage.addGestureRecognizer(recognizer)
+        
        
     }
+    
+    func choosePhoto(){
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+        
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        selectedPhoto = (info[UIImagePickerControllerEditedImage] as? UIImage)!
+        profilImage.image = selectedPhoto
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func profilUpdateClicked(_ sender: Any) {
         showActivityIndicator()
         getUpdateProfil()
@@ -84,10 +114,10 @@ class ProfilVC : UIViewController,ActivityIndicatorPresenter {
                     let imageurl = jsonResult["StUserImage"] as? String
                     let imgURL = imageurl
                     self.profilImage.setImageFromURl(stringImageUrl: imgURL!)
-                    self.faceLabel.text = jsonResult["StFacebook"] as? String
-                    self.intaLabel.text = jsonResult["StInstagram"] as? String
-                    self.linkedLabel.text = jsonResult["StInstagram"] as? String
-                
+                        self.faceTV.text = jsonResult["StFacebook"] as! String
+                        self.instaTV.text = jsonResult["StInstagram"] as! String
+                        self.linkedinTV.text = jsonResult["StLinkedin"] as! String
+                  
                         
                     }
                     
@@ -105,33 +135,62 @@ class ProfilVC : UIViewController,ActivityIndicatorPresenter {
     func getUpdateProfil(){
         self.hideActivityIndicator()
         let url = URL(string: "https://ekolife.ekoccs.com/api/User/UpdateUser")!
-        var request = URLRequest(url: url)
-        let config = URLSessionConfiguration.default
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        let postString = "InUserID: \("2319"),StFBUserName:\("qwe"),StInsUserName:\("asd"),StLnkdnUserName:\("zxc"),StProfileImage:\("")"
-        request.httpBody = postString.data(using: .utf8)
+        let imageData = selectedPhoto?.jpeg(.low)
+        let imageString = imageData != nil ? imageData?.base64EncodedString(options: []) : ""
         let together = "\(autoid) \(firebaseToken)"
-        config.httpAdditionalHeaders = ["Authorization" : together]
-        let session: URLSession = URLSession(configuration: config, delegate: self as? URLSessionDelegate, delegateQueue: OperationQueue())
+      
         
-        let task: URLSessionDataTask = session.dataTask(with: request) { (data, response, error)  -> Void in
-           // print("response \(String(describing: data))")
-            do {
-               
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
-                     DispatchQueue.main.async {
-                    let defaults:UserDefaults = UserDefaults.standard
-                    let userImageString = jsonResult["userImage"] as! String
-                    defaults.set(userImageString, forKey: "userimage")
+        let params : [String: AnyObject] = [
+            "InUserID": userid as AnyObject,
+            "StFBUserName": self.faceTV.text as AnyObject,
+            "StInsUserName" : self.instaTV.text as AnyObject,
+            "StLnkdnUserName" : self.linkedinTV.text as AnyObject,
+            "StProfileImage" : imageString! as AnyObject
+        ]
+        let parametersHeader = [
+            "Content-Type" : "application/json",
+            "Authorization": "\(together)"
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: params ,encoding: JSONEncoding.default, headers: parametersHeader).validate(statusCode: 200..<600)
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    
+                    self.hideActivityIndicator()
+                    if (response.result.value != nil){
+                        var dict = response.result.value as! NSDictionary
+                        
+                        if( dict["response"] as! Bool == false){
+                            let alert = UIAlertController(title: "Hata", message: "Bir Hata Oluştu !", preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                            
+                        } else {
+                            let alert = UIAlertController(title: "Başarılı", message: "İsteğiniz Gönderilmiştir", preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    } else  {
+                        let alert = UIAlertController(title: "Hata", message: "Bir hata oluştu lütfen sistem yöneticinize başvurunuz", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        self.getUserProfil()
                     }
+                    
+                case .failure(let error):
+                    print(error)
+                    //completion(dic,0)
                 }
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-            
-        }
-        task.resume()
+
     }
+    
+    
+    
+    }
+    
+    
+    
+    
     
 }

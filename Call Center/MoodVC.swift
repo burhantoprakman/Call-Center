@@ -92,17 +92,17 @@ class MoodVC : UIViewController,ActivityIndicatorPresenter {
     
     func postRequest(userid : String,moodId : Int , autoId : String){
         
-        let url = URL(string: "https://ekolife.ekoccs.com/token")!
+        let url = URL(string: "https://ekolife.ekoccs.com/api/User/InsertMood")!
         var request = URLRequest(url: url)
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = ["Authorization" : together]
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
-         let postString = "InUserId=\(userid)&InMood=\("\(moodId)")"
+         let postString = "InPersonId=\(userid)&InMood=\("\(moodId)")"
         
         request.httpBody = postString.data(using: .utf8)
         
-        let session = URLSession.shared
+        let session: URLSession = URLSession(configuration: config, delegate: self as? URLSessionDelegate, delegateQueue: OperationQueue())
         let task = session.dataTask(with: request ){ data, response, error in
             
             if error != nil{
@@ -119,19 +119,16 @@ class MoodVC : UIViewController,ActivityIndicatorPresenter {
                             self.hideActivityIndicator()
                             if (JsonResult["response"] as! Bool == true){
                                 let alert = UIAlertController(title: "Başarılı", message: "Mood'unuz gönderildi", preferredStyle: UIAlertControllerStyle.alert)
-                                alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
+                                alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: self.openMainPage))
                                 self.present(alert, animated: true, completion: nil)
                             }else {
                                 let alert1 = UIAlertController(title: "Hata", message: "Bir hata oluştu lütfen daha sonra tekrar deneyiniz", preferredStyle: UIAlertControllerStyle.alert)
-                                alert1.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
+                                alert1.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: self.openMainPage))
                                 self.present(alert1, animated: true, completion: nil)
                                 
                             }
                             
                         }
-                        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                        let newViewController = storyBoard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-                        self.present(newViewController, animated: true, completion: nil)
                         
                     } // do bitişi
                     catch {
@@ -145,6 +142,12 @@ class MoodVC : UIViewController,ActivityIndicatorPresenter {
         task.resume()
         
     }
+    func openMainPage(action: UIAlertAction) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
     
     @IBAction func nedenSoruyoruzClicked(_ sender: Any) {
         

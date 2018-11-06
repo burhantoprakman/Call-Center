@@ -30,15 +30,19 @@ class AllTransportVC: UIViewController, IndicatorInfoProvider,UITableViewDelegat
         
         allTranportTableView.delegate = self
         allTranportTableView.dataSource = self
+        if ( UserDefaults.standard.bool(forKey: "kayitsizKullanici") == true ){
+            //
+        }else  {
+            let defaults = UserDefaults.standard
+            autoid = defaults.string(forKey: "autoid")!
+            firebaseToken = defaults.string(forKey: "firebasetoken")!
+            userid = defaults.string(forKey: "userid")!
+            
+            
+            allTranportTableView.rowHeight = UITableViewAutomaticDimension
+            getAllTransport()
+        }
         
-        let defaults = UserDefaults.standard
-        autoid = defaults.string(forKey: "autoid")!
-        firebaseToken = defaults.string(forKey: "firebasetoken")!
-        userid = defaults.string(forKey: "userid")!
-        
-        
-        allTranportTableView.rowHeight = UITableViewAutomaticDimension
-        getAllTransport()
   
     }
     func getAllTransport(){

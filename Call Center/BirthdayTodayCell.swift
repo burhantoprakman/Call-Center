@@ -33,9 +33,13 @@ class BirthdayTodayCell : UITableViewCell {
         if(userid == mdataset.tebrikButton){
             tebrikButton.isHidden = true
             totalLikesLabel.isHidden = false
-            totalLikesLabel.text = "\(totallike)"
+            totalLikesLabel.text = "\(totallike) kişi seni tebrik etti"
         }
-        else {
+        else if mdataset.isBeforeLiked == true {
+            tebrikButton.isHidden = true
+             totalLikesLabel.isHidden = false
+            totalLikesLabel.text = "Daha önce tebrik ettiniz"
+        } else {
             tebrikButton.isHidden = false
             totalLikesLabel.isHidden = true
         }
@@ -58,10 +62,7 @@ class BirthdayTodayCell : UITableViewCell {
             faceButton.isHidden = false
             faceButton.titleLabel?.text = mdataset.faceString
         }
-        
-        
-        
-        
+       
         nameLabel.text = mdataset.name
         tebrikButton.tag = Int(mdataset.tebrikButton)!
 

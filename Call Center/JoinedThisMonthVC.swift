@@ -24,12 +24,19 @@ class JoinedThisMonthVC : UIViewController , IndicatorInfoProvider, UITableViewD
         super.viewDidLoad()
         joinThisMonthTableView.delegate = self
         joinThisMonthTableView.dataSource = self
-        let defaults = UserDefaults.standard
-        autoid = defaults.string(forKey: "autoid")!
-        firebaseToken = defaults.string(forKey: "firebasetoken")!
-        userid = defaults.string(forKey: "userid")!
-        showActivityIndicator()
-        getJoinUsThisMonth()
+        
+        if ( UserDefaults.standard.bool(forKey: "kayitsizKullanici") == true ){
+     
+        } else {
+            let defaults = UserDefaults.standard
+            autoid = defaults.string(forKey: "autoid")!
+            firebaseToken = defaults.string(forKey: "firebasetoken")!
+            userid = defaults.string(forKey: "userid")!
+            showActivityIndicator()
+            getJoinUsThisMonth()
+        }
+        
+        
     }
     
     func tebrikClicked( sender: UIButton) {
@@ -115,10 +122,11 @@ class JoinedThisMonthVC : UIViewController , IndicatorInfoProvider, UITableViewD
                         let phoneNumber : String = String(describing: users["StPhoneMobile"]!)
                         let personalEmail : String = String(describing: users["stFrmeMail"]!)
                         let firmName : String = String(describing: users["StProjectName"]!)
+                        let isBeforeLiked : Bool = (users["BoIsLiked"] as! Bool)
                         let instaLink : String = "" //String(describing: users["StInstagram"]!)
                         let faceLink : String = "" //String(describing: users["StFacebook"]!)
                         
-                        let jThisMonthpojo = JoinusPojo.init(profImage: profImage, name: personalName, tebrikButton: personalId, phonenumber: phoneNumber, email: personalEmail, firmName: firmName, instalink : instaLink , facelink : faceLink )
+                        let jThisMonthpojo = JoinusPojo.init(profImage: profImage, name: personalName, tebrikButton: personalId, phonenumber: phoneNumber, email: personalEmail, firmName: firmName, instalink : instaLink , facelink : faceLink,isBeforeLiked: isBeforeLiked )
                         resultArray.append(jThisMonthpojo)
                     }
                     

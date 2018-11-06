@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 class IhaveIdeaVC : UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ActivityIndicatorPresenter  {
   
@@ -24,10 +25,18 @@ class IhaveIdeaVC : UIViewController,UIImagePickerControllerDelegate,UINavigatio
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let defaults = UserDefaults.standard
-        autoid = defaults.string(forKey: "autoid")!
-        firebaseToken = defaults.string(forKey: "firebasetoken")!
-        userid = defaults.string(forKey: "userid")!
+        
+        if ( UserDefaults.standard.bool(forKey: "kayitsizKullanici") == true ){
+           
+        } else {
+            
+            let defaults = UserDefaults.standard
+            autoid = defaults.string(forKey: "autoid")!
+            firebaseToken = defaults.string(forKey: "firebasetoken")!
+            userid = defaults.string(forKey: "userid")!
+        }
+        
+     
         let img = UIImage(named: "moodarkaplan.png")
         view.layer.contents = img?.cgImage
         self.hideKeyboardWhenTappedAround()
@@ -60,67 +69,110 @@ class IhaveIdeaVC : UIViewController,UIImagePickerControllerDelegate,UINavigatio
     }
     func postDatas(){
         showActivityIndicator()
-        let imageData = selectedPhoto?.jpeg(.lowest)
-        let imageString = imageData?.base64EncodedString(options: [])
+        let imageData = selectedPhoto?.jpeg(.low)
+        let imageString = imageData != nil ? imageData?.base64EncodedString(options: []) : ""
         let titleText = titleLabel.text!
         let bodyText = bodyLabel.text!
         let url = URL(string: "https://ekolife.ekoccs.com/api/General/InsertFikirSikayet")!
         let config = URLSessionConfiguration.default
         let together = "\(autoid) \(firebaseToken)"
-        config.httpAdditionalHeaders = ["Authorization" : together]
-        var request = URLRequest(url: url)
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "POST"
-        let postString = "InUserId=\(userid)&StKonu=\(titleText)&StNot=\(bodyText)&StImage=\(imageString)"
+//        config.httpAdditionalHeaders = ["Authorization" : together]
+//        var request = URLRequest(url: url)
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.httpMethod = "POST"
+//        let postString = "InUserId=\(userid))&StKonu=\(titleText)&StNot=\(bodyText)&StImage=\(imageString)"
+//        
+//        let session: URLSession = URLSession(configuration: config, delegate: self as? URLSessionDelegate, delegateQueue: OperationQueue())
+//        request.httpBody = postString.data(using: .utf8)
         
+        let params : [String: AnyObject] = [
+            "InUserId": userid as AnyObject,
+            "StKonu": titleText as AnyObject,
+            "StNot" : bodyText as AnyObject,
+            "StImage" : imageString! as AnyObject
+        ]
+        let parametersHeader = [
+            "Content-Type" : "application/json",
+            "Authorization": "\(together)"
+        ]
         
-        //let str = "123"
-        //let strdata = str.data(using: String.Encoding.utf8)
-        //let postString = "InUserId=\(userid)&StKonu=\("")&StNot=\("\"str\"")&StImage=\(imageString)"
-        let session: URLSession = URLSession(configuration: config, delegate: self as? URLSessionDelegate, delegateQueue: OperationQueue())
-        request.httpBody = postString.data(using: .utf8)
-        let task = session.dataTask(with: request ){ data, response, error in
-            
-            if error != nil{
-                print("Get Request Error")
-            }
-            else{
-                
-                if data != nil {
-                    
-                    do {
-                        let JsonResult = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
-                        DispatchQueue.main.async {
-                            self.hideActivityIndicator()
-                            let bool : Bool = JsonResult["response"] as! Bool
-                            if(!bool){
-                                let alert = UIAlertController(title: "Hata", message: "Bir Hata Oluştu !", preferredStyle: UIAlertControllerStyle.alert)
-                                alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
-                                
-                            } else {
-                                let alert = UIAlertController(title: "Başarılı", message: "İsteğiniz Gönderilmiştir", preferredStyle: UIAlertControllerStyle.alert)
-                                alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
-                            }
-                            
-                            
-                      
-                        }
+        Alamofire.request(url, method: .post, parameters: params ,encoding: JSONEncoding.default, headers: parametersHeader).validate(statusCode: 200..<600)
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+    
+                    self.hideActivityIndicator()
+                    if (response.result.value != nil){
+                        var dict = response.result.value as! NSDictionary
                         
-                    } // do bitişi
-                    catch {
+                        if( dict["response"] as! Bool == false){
+                                                    let alert = UIAlertController(title: "Hata", message: "Bir Hata Oluştu !", preferredStyle: UIAlertControllerStyle.alert)
+                                                    alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
+                                                    self.present(alert, animated: true, completion: nil)
+
+                                                } else {
+                                                    let alert = UIAlertController(title: "Başarılı", message: "İsteğiniz Gönderilmiştir", preferredStyle: UIAlertControllerStyle.alert)
+                                                    alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
+                                                    self.present(alert, animated: true, completion: nil)
+                                                }
+                    } else  {
                         let alert = UIAlertController(title: "Hata", message: "Bir hata oluştu lütfen sistem yöneticinize başvurunuz", preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                        print("CATCH OLDU")
+                                                alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
+                                                self.present(alert, animated: true, completion: nil)
                     }
+
+                case .failure(let error):
+                    print(error)
+                    //completion(dic,0)
                 }
-                
-            }
-            
         }
-        task.resume()
+        
+        
+        
+        
+//
+//        let task = session.dataTask(with: request ){ data, response, error in
+//
+//            if error != nil{
+//                print("Get Request Error")
+//            }
+//            else{
+//
+//                if data != nil {
+//
+//                    do {
+//                        let JsonResult = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:AnyObject]
+//                        DispatchQueue.main.async {
+//                            self.hideActivityIndicator()
+//                            let bool : Bool = JsonResult["response"] as! Bool
+//                            if(!bool){
+//                                let alert = UIAlertController(title: "Hata", message: "Bir Hata Oluştu !", preferredStyle: UIAlertControllerStyle.alert)
+//                                alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
+//                                self.present(alert, animated: true, completion: nil)
+//
+//                            } else {
+//                                let alert = UIAlertController(title: "Başarılı", message: "İsteğiniz Gönderilmiştir", preferredStyle: UIAlertControllerStyle.alert)
+//                                alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
+//                                self.present(alert, animated: true, completion: nil)
+//                            }
+//
+//
+//
+//                        }
+//
+//                    } // do bitişi
+//                    catch {
+//                        let alert = UIAlertController(title: "Hata", message: "Bir hata oluştu lütfen sistem yöneticinize başvurunuz", preferredStyle: UIAlertControllerStyle.alert)
+//                        alert.addAction(UIAlertAction(title: "Kapat", style: UIAlertActionStyle.default, handler: nil))
+//                        self.present(alert, animated: true, completion: nil)
+//                        print("CATCH OLDU")
+//                    }
+//                }
+//
+//            }
+//
+//        }
+//        task.resume()
 }
     
   

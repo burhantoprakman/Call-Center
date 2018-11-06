@@ -35,12 +35,19 @@ class PersonalVC : UIViewController, UITableViewDelegate , UITableViewDataSource
         }
         peronalTableView.delegate = self
         peronalTableView.dataSource = self
+        
+        if ( UserDefaults.standard.bool(forKey: "kayitsizKullanici") == true ){
+            
+        } else {
+            
+            let defaults:UserDefaults = UserDefaults.standard
+            autoid = defaults.string(forKey: "autoid")!
+            firebaseToken = defaults.string(forKey: "firebasetoken")!
+            showActivityIndicator()
+            getPersonelData()
+        }
     
-        let defaults:UserDefaults = UserDefaults.standard
-        autoid = defaults.string(forKey: "autoid")!
-        firebaseToken = defaults.string(forKey: "firebasetoken")!
-        showActivityIndicator()
-        getPersonelData()
+        
         
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -51,9 +58,7 @@ class PersonalVC : UIViewController, UITableViewDelegate , UITableViewDataSource
       
     }
    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return currentPersonelResult.count
-    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
     }

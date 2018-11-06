@@ -56,6 +56,7 @@
 		635489D0202B068800C0545E /* TransportationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635489CF202B068800C0545E /* TransportationVC.swift */; };
 		635489D3202B089F00C0545E /* YourTransportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635489D2202B089F00C0545E /* YourTransportVC.swift */; };
 		635489D5202B08B400C0545E /* AllTransportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635489D4202B08B400C0545E /* AllTransportVC.swift */; };
+		635A57BE2154FB5D00F884F2 /* Profilim.png in Resources */ = {isa = PBXBuildFile; fileRef = 635A57BD2154FB5D00F884F2 /* Profilim.png */; };
 		635E8A76205C0216002DA1F3 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E8A75205C0216002DA1F3 /* NotificationService.swift */; };
 		635E8A7A205C0216002DA1F3 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 635E8A73205C0216002DA1F3 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		63652BEB1FFD127900D2E386 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63652BEA1FFD127900D2E386 /* MenuController.swift */; };
@@ -106,6 +107,7 @@
 		636D70161FF67CDB00232BC2 /* MainPagePojo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636D70151FF67CDB00232BC2 /* MainPagePojo.swift */; };
 		638AED6120616D9F00091AA2 /* Kişiler.png in Resources */ = {isa = PBXBuildFile; fileRef = 638AED5F20616D9E00091AA2 /* Kişiler.png */; };
 		638AED6220616D9F00091AA2 /* tel.png in Resources */ = {isa = PBXBuildFile; fileRef = 638AED6020616D9E00091AA2 /* tel.png */; };
+		638F34C52170C19F00CCBA3A /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638F34C42170C19F00CCBA3A /* SignUpVC.swift */; };
 		6392EA8C211431EE00188BAD /* ActivityIndicatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392EA8B211431EE00188BAD /* ActivityIndicatorPresenter.swift */; };
 		63A49AD220614FDB00AFB004 /* Çıkış.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A49AD120614FDB00AFB004 /* Çıkış.png */; };
 		63A49AD42061527D00AFB004 /* Aramıza Katılanlar.png in Resources */ = {isa = PBXBuildFile; fileRef = 63A49AD32061527D00AFB004 /* Aramıza Katılanlar.png */; };
@@ -196,6 +198,7 @@
 		635489CF202B068800C0545E /* TransportationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationVC.swift; sourceTree = "<group>"; };
 		635489D2202B089F00C0545E /* YourTransportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourTransportVC.swift; sourceTree = "<group>"; };
 		635489D4202B08B400C0545E /* AllTransportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTransportVC.swift; sourceTree = "<group>"; };
+		635A57BD2154FB5D00F884F2 /* Profilim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Profilim.png; sourceTree = "<group>"; };
 		635E8A73205C0216002DA1F3 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		635E8A75205C0216002DA1F3 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		635E8A77205C0216002DA1F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -249,6 +252,7 @@
 		636D70151FF67CDB00232BC2 /* MainPagePojo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPagePojo.swift; sourceTree = "<group>"; };
 		638AED5F20616D9E00091AA2 /* Kişiler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Kişiler.png"; path = "../../Kişiler.png"; sourceTree = "<group>"; };
 		638AED6020616D9E00091AA2 /* tel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tel.png; path = ../../tel.png; sourceTree = "<group>"; };
+		638F34C42170C19F00CCBA3A /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		6392EA8B211431EE00188BAD /* ActivityIndicatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorPresenter.swift; sourceTree = "<group>"; };
 		63A49AD120614FDB00AFB004 /* Çıkış.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Çıkış.png"; sourceTree = "<group>"; };
 		63A49AD32061527D00AFB004 /* Aramıza Katılanlar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aramıza Katılanlar.png"; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 				636D6FA11FF63C0B00232BC2 /* MainVC.swift */,
 				631F45D5202854F7008762EF /* ActivitiesVC.swift */,
 				63486934204958FD00636D0A /* NewsDetailVC.swift */,
+				638F34C42170C19F00CCBA3A /* SignUpVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -457,6 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				63507046201E2A0100F80710 /* Ana Sayfa.png */,
+				635A57BD2154FB5D00F884F2 /* Profilim.png */,
 				631893142049812A00AB9113 /* aramizakatilanlar.png */,
 				6318931C204982D500AB9113 /* etkinliklerr.png */,
 				6318931B204982D500AB9113 /* haberlerr.png */,
@@ -735,6 +741,7 @@
 				636D6FC01FF64B9500232BC2 /* logo.png in Resources */,
 				636D6FE51FF64CCE00232BC2 /* Yemek.png in Resources */,
 				631893172049813100AB9113 /* bugundoganlar.png in Resources */,
+				635A57BE2154FB5D00F884F2 /* Profilim.png in Resources */,
 				63507047201E2A0100F80710 /* Ana Sayfa.png in Resources */,
 				63A49AD8206152C700AFB004 /* Öneri-Şikayet.png in Resources */,
 				6318931E204982D600AB9113 /* yemekk.png in Resources */,
@@ -765,12 +772,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Call Center/Pods-Call Center-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CollapsibleTableSectionViewController/CollapsibleTableSectionViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/HanekeSwift/Haneke.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollapsibleTableSectionViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Haneke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
@@ -899,6 +908,7 @@
 				634A46E11FF90C240011F333 /* IhaveIdeaVC.swift in Sources */,
 				635070362019F7D300F80710 /* SWRevealViewController.m in Sources */,
 				635489D0202B068800C0545E /* TransportationVC.swift in Sources */,
+				638F34C52170C19F00CCBA3A /* SignUpVC.swift in Sources */,
 				634F1A122057F5730003E5C3 /* YourTransportCellTableViewCell.swift in Sources */,
 				6350703B201B45D500F80710 /* PersonalVC.swift in Sources */,
 				631F45DA20285CE5008762EF /* ActivitiesPojo.swift in Sources */,

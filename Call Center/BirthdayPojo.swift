@@ -15,15 +15,17 @@ class BirthdayPojo {
     var instaString : String
     var faceString : String
     var horoscope : String
+    var isBeforeLiked : Bool
     //var totalLikes : String
     
-    init(profImage : String , name : String , tebrikButton : String , instaString : String , faceString : String, horoscope : String) {
+    init(profImage : String , name : String , tebrikButton : String , instaString : String , faceString : String, horoscope : String,isBeforeLiked: Bool) {
         self.profImage = profImage
         self.name = name
         self.tebrikButton = tebrikButton
         self.instaString = instaString
         self.faceString = faceString
         self.horoscope = horoscope
+        self.isBeforeLiked = isBeforeLiked
         //self.totalLikes = totalLikes
     }
     

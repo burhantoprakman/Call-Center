@@ -17,8 +17,9 @@ class JoinusPojo {
     var firmName : String
     var instalink : String
     var facelink : String
+    var isBeforeLiked : Bool
     
-    init(profImage : String , name : String , tebrikButton : String , phonenumber : String, email : String, firmName : String, instalink : String, facelink : String) {
+    init(profImage : String , name : String , tebrikButton : String , phonenumber : String, email : String, firmName : String, instalink : String, facelink : String,isBeforeLiked : Bool) {
         self.profImage = profImage
         self.name = name
         self.tebrikButton = tebrikButton
@@ -27,6 +28,7 @@ class JoinusPojo {
         self.firmName = firmName
         self.instalink = instalink
         self.facelink = facelink
+        self.isBeforeLiked = isBeforeLiked
     }
     
     

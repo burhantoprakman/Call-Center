@@ -27,26 +27,36 @@ class MenuController : UIViewController, UITableViewDataSource , UITableViewDele
         menuTV.dataSource = self
         menuTV.backgroundColor = UIColor.blue
         
-        let defaults:UserDefaults = UserDefaults.standard
-        let username = defaults.string(forKey: "usernamesurname")
-        let imageurl = defaults.string(forKey: "userimage")!
-        let jLikes = defaults.integer(forKey: "joinlikes")
-        let bLikes = defaults.integer(forKey: "birthdaylikes")
-        
-        profilNameSurname.textColor = UIColor.white
-        profilImageView.setImageFromURl(stringImageUrl: imageurl)
-        profilImageView.layer.cornerRadius = profilImageView.frame.width/2
-        if(jLikes != 0 ){
-            profilNameSurname.text = "Aramıza Hoşgeldin \(String(describing: username))"
+        if ( UserDefaults.standard.bool(forKey: "kayitsizKullanici")  == true ) {
+             profilNameSurname.textColor = UIColor.white
+            profilImageView.image = #imageLiteral(resourceName: "Kişiler.png")
+            profilImageView.layer.cornerRadius = profilImageView.frame.width/2
+            profilNameSurname.text = UserDefaults.standard.string(forKey: "username")
         } else {
-            profilNameSurname.text = username
-        }
-        if (bLikes != 0){
-            profilNameSurname.text = "Doğum Günün Kutlu Olsun \(String(describing: username))"
             
-        } else {
-            profilNameSurname.text = username
+            let defaults:UserDefaults = UserDefaults.standard
+            let username = defaults.string(forKey: "usernamesurname")
+            let imageurl = defaults.string(forKey: "userimage")!
+            let jLikes = defaults.integer(forKey: "joinlikes")
+            let bLikes = defaults.integer(forKey: "birthdaylikes")
+            
+            profilNameSurname.textColor = UIColor.white
+            profilImageView.setImageFromURl(stringImageUrl: imageurl)
+            profilImageView.layer.cornerRadius = profilImageView.frame.width/2
+            if(jLikes != 0 ){
+                profilNameSurname.text = "Aramıza Hoşgeldin \(String(describing: username))"
+            } else {
+                profilNameSurname.text = username
+            }
+            if (bLikes != 0){
+                profilNameSurname.text = "Doğum Günün Kutlu Olsun \(String(describing: username))"
+                
+            } else {
+                profilNameSurname.text = username
+            }
         }
+        
+        
         
        
     }

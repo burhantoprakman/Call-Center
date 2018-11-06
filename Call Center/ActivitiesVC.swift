@@ -26,11 +26,16 @@ class ActivitiesVC : UIViewController,UICollectionViewDelegate,UICollectionViewD
         super.viewDidLoad()
         activityCollectionView.delegate = self
         activityCollectionView.dataSource = self
-        let defaults = UserDefaults.standard
-        autoid = defaults.string(forKey: "autoid")!
-        firebaseToken = defaults.string(forKey: "firebasetoken")!
-        showActivityIndicator()
-        getActivitiesData()
+       
+        
+        if ( UserDefaults.standard.bool(forKey: "kayitsizKullanici") != true ){
+            let defaults = UserDefaults.standard
+            autoid = defaults.string(forKey: "autoid")!
+            firebaseToken = defaults.string(forKey: "firebasetoken")!
+            showActivityIndicator()
+            getActivitiesData()
+        }
+        
         
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()

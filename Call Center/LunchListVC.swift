@@ -41,11 +41,20 @@ class LunchListVC : UIViewController,UICollectionViewDataSource,UICollectionView
 
     override func viewDidLoad() {
     super.viewDidLoad()
-        let defaults = UserDefaults.standard
-        autoid = defaults.string(forKey: "autoid")!
-        firebaseToken = defaults.string(forKey: "firebasetoken")!
+     
         lunchTableView.delegate = self
         lunchTableView.dataSource = self
+        
+        
+        if ( UserDefaults.standard.bool(forKey: "kayitsizKullanici") == true ){
+         
+        } else {
+            
+            let defaults = UserDefaults.standard
+            autoid = defaults.string(forKey: "autoid")!
+            firebaseToken = defaults.string(forKey: "firebasetoken")!
+            getMealMenus()
+        }
         
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -71,7 +80,7 @@ class LunchListVC : UIViewController,UICollectionViewDataSource,UICollectionView
         
         getStartDateDayPosition()
         showActivityIndicator()
-        getMealMenus()
+        
    
         }
 

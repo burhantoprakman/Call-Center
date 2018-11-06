@@ -51,11 +51,15 @@ class MainVC: UIViewController , UITableViewDelegate , UITableViewDataSource,Act
         MainPageTableView.delegate = self
         MainPageTableView.dataSource = self
          let defaults:UserDefaults = UserDefaults.standard
-        userid = defaults.string(forKey: "userid")!
-        autoid = defaults.string(forKey: "autoid")!
-        firebaseToken = defaults.string(forKey: "firebasetoken")!
-        showActivityIndicator()
-        getMainPageInformation()
+        
+        if ( UserDefaults.standard.bool(forKey: "kayitsizKullanici")  == false ) {
+            userid = defaults.string(forKey: "userid")!
+            autoid = defaults.string(forKey: "autoid")!
+            firebaseToken = defaults.string(forKey: "firebasetoken")!
+            showActivityIndicator()
+            getMainPageInformation()
+        }
+        
         
      
         

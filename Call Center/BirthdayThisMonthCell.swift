@@ -37,9 +37,13 @@ class BirthdayThisMonthCell : UITableViewCell {
         if(userid == mdataset.tebrikButton){
             tebrikButton.isHidden = true
             totalLikesLabel.isHidden = false
-            totalLikesLabel.text = "\(totallike)"
+            totalLikesLabel.text = "\(totallike) kişi seni tebrik etti"
         }
-        else {
+        else if mdataset.isBeforeLiked == true {
+            tebrikButton.isHidden = true
+             totalLikesLabel.isHidden = false
+            totalLikesLabel.text = "Daha önce tebrik ettiniz"
+        } else {
             tebrikButton.isHidden = false
             totalLikesLabel.isHidden = true
         }

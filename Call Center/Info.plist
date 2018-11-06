@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4</string>
+	<string>2.0.3</string>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>13</string>
 	<key>CVCalendarViewMode</key>
 	<string>MonthView</string>
 	<key>LSApplicationQueriesSchemes</key>

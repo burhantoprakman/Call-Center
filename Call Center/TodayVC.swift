@@ -26,14 +26,20 @@ class TodayVC : UIViewController ,IndicatorInfoProvider, UITableViewDelegate , U
         super.viewDidLoad()
         bTodayTableView.delegate = self
         bTodayTableView.dataSource = self
-        let defaults = UserDefaults.standard
-        autoid = defaults.string(forKey: "autoid")!
-        firebaseToken = defaults.string(forKey: "firebasetoken")!
-        userid = defaults.string(forKey: "userid")!
         
-        showActivityIndicator()
+        if ( UserDefaults.standard.bool(forKey: "kayitsizKullanici") == true ){
+          
+        } else {
+            let defaults = UserDefaults.standard
+            autoid = defaults.string(forKey: "autoid")!
+            firebaseToken = defaults.string(forKey: "firebasetoken")!
+            userid = defaults.string(forKey: "userid")!
+            
+            showActivityIndicator()
+            
+            getTodayBirthday()
+        }
         
-        getTodayBirthday()
         
     }
     
@@ -127,8 +133,9 @@ class TodayVC : UIViewController ,IndicatorInfoProvider, UITableViewDelegate , U
                         let personelInsta : String = String(describing: users["StInstagram"]!)
                         let personalFace : String = String(describing: users["StFacebook"]!)
                         let profImage : String = String(describing: users["StProfilePhoto"]!)
+                        let isBeforeLiked : Bool = (users["BoIsLiked"] as! Bool)
                         
-                        let bTodaypojo = BirthdayPojo.init(profImage: profImage, name: personalName, tebrikButton: personalId, instaString: personelInsta, faceString: personalFace, horoscope: horoscope)
+                        let bTodaypojo = BirthdayPojo.init(profImage: profImage, name: personalName, tebrikButton: personalId, instaString: personelInsta, faceString: personalFace, horoscope: horoscope,isBeforeLiked:isBeforeLiked)
                         resultArray.append(bTodaypojo)
                     }
                     

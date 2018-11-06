@@ -24,12 +24,19 @@ class JoinedThisWeekVC : UIViewController, IndicatorInfoProvider, UITableViewDel
         super.viewDidLoad()
         joinThisWeekTableView.delegate = self
         joinThisWeekTableView.dataSource = self
-        let defaults = UserDefaults.standard
-        autoid = defaults.string(forKey: "autoid")!
-        firebaseToken = defaults.string(forKey: "firebasetoken")!
-        userid = defaults.string(forKey: "userid")!
-        showActivityIndicator()
-        getJoinUsThisWeek()
+        
+        if ( UserDefaults.standard.bool(forKey: "kayitsizKullanici") == true ){
+           
+        } else {
+            let defaults = UserDefaults.standard
+            autoid = defaults.string(forKey: "autoid")!
+            firebaseToken = defaults.string(forKey: "firebasetoken")!
+            userid = defaults.string(forKey: "userid")!
+            showActivityIndicator()
+            getJoinUsThisWeek()
+        }
+        
+        
     }
     
     
@@ -118,10 +125,11 @@ class JoinedThisWeekVC : UIViewController, IndicatorInfoProvider, UITableViewDel
                         let phoneNumber : String = String(describing: users["StPhoneMobile"]!)
                         let personalEmail : String = String(describing: users["stFrmeMail"]!)
                          let firmName : String = String(describing: users["StProjectName"]!)
+                        let isBeforeLiked : Bool = (users["BoIsLiked"] as! Bool)
                         let instaLink : String = "" //String(describing: users["StInstagram"]!)
                         let faceLink : String = "" //String(describing: users["StFacebook"]!)
                         
-                        let jThisWeekpojo = JoinusPojo.init(profImage: profImage, name: personalName, tebrikButton: personalId, phonenumber: phoneNumber, email: personalEmail, firmName: firmName, instalink : instaLink , facelink : faceLink )
+                        let jThisWeekpojo = JoinusPojo.init(profImage: profImage, name: personalName, tebrikButton: personalId, phonenumber: phoneNumber, email: personalEmail, firmName: firmName, instalink : instaLink , facelink : faceLink, isBeforeLiked: isBeforeLiked )
                         resultArray.append(jThisWeekpojo)
                     }
                     
